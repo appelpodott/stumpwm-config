@@ -69,7 +69,7 @@ additional key."
 (al/define-key *root-map* "o"   "al/fother")
 (al/define-key *root-map* "M-o" "fnext")
 
-(al/define-key *top-map* "s-r"   "al/toggle-root")
+;;(al/define-key *top-map* "s-r"   "al/toggle-root")
 (al/define-key *top-map* "M-s-w" "vgroups")
 (al/define-key *top-map* "M-s-g" "grouplist")
 (al/define-key *top-map* "H-o"   "al/other H-o")
@@ -306,12 +306,19 @@ additional key."
 
 (defvar *al/frame-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
-
-
 (al/define-key *top-map* "s-f" '*al/frame-layout*)
 (al/define-key *al/frame-layout* "h" "hsplit")
 (al/define-key *al/frame-layout* "v" "vsplit")
 (al/define-key *al/frame-layout* "k" "remove")
+
+
+(defvar *al/rotate* (make-sparse-keymap)
+  "Rotate xrandr.")
+(al/define-key *top-map* "s-r" '*al/rotate*)
+(al/define-key *al/rotate* "n" "exec xrandr --output eDP1 --rotate normal")
+(al/define-key *al/rotate* "r" "exec xrandr --output eDP1 --rotate right")
+(al/define-key *al/rotate* "l" "exec xrandr --output eDP1 --rotate left")
+(al/define-key *al/rotate* "i" "exec xrandr --output eDP1 --rotate inverted")
 
 ;;; Web jumps
 
