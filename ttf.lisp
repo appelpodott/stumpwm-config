@@ -34,9 +34,9 @@
 Return nil, if there are some problems with this font."
   (let ((font (handler-case
                   (make-instance 'xft:font
-                                 :family "Liberation Mono"
+                                 :family "mono"
                                  :subfamily "Bold"
-                                 :size 12)
+                                 :size 18)
                 ;; Error means that (xft:cache-fonts) was never run, or
                 ;; the font is not installed.
                 (error () nil))))

@@ -357,7 +357,7 @@ beginning with ':') where a service is started."
 ;;; Interacting with browser
 
 (defvar *al/browsers*
-  '(("icecat" . "IceCat")
+  '(("qutebrowser" . "qutebrowser")
     ("firefox" . "firefox"))
   "Alist of browsers.
 Each assoc should have a form of `*al/current-browser*'.")
@@ -400,10 +400,10 @@ program.")
 
 ;;; Interacting with other progs
 
-(defcommand al/xterm () ()
-  "Start xterm unless it is already running, in which case focus it."
-  (run-or-raise (al/herd-command "xterm")
-                '(:class "XTerm")))
+(defcommand al/st () ()
+  "Start st unless it is already running, in which case focus it."
+  (run-or-raise (al/herd-command "st")
+                '(:class "St")))
 
 (defcommand al/toggle-unclutter () ()
   "Start/stop 'unclutter' on the current display."

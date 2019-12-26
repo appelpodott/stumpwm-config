@@ -19,9 +19,8 @@
 
 (in-package :stumpwm)
 
-(set-prefix-key (kbd "s-t"))
+(set-prefix-key (kbd "C-i"))
 
-
 ;;; Functional/additional keys (placed on the same keys)
 
 (defvar al/f-keys-alist
@@ -71,7 +70,6 @@ additional key."
 (al/define-key *root-map* "M-o" "fnext")
 
 (al/define-key *top-map* "s-r"   "al/toggle-root")
-(al/define-key *top-map* "s-w"   "windowlist")
 (al/define-key *top-map* "M-s-w" "vgroups")
 (al/define-key *top-map* "M-s-g" "grouplist")
 (al/define-key *top-map* "H-o"   "al/other H-o")
@@ -159,15 +157,15 @@ additional key."
 (al/define-key *top-map* "s-XF86WLAN" "exec rfkill block wlan")
 ;; Pressing XF86RFKill blocks/unblocks wlan automatically (on the kernel
 ;; level), but this key is still available for binding.
-(al/define-key *top-map* "XF86RFKill" "echo The state of ^[^B^5*wlan^] has been changed")
+;;(al/define-key *top-map* "XF86RFKill" "echo The state of ^[^B^5*wlan^] has been changed")
 
 
 ;;; Controlling brightness
 
-(al/define-key *top-map* "XF86MonBrightnessUp"      "exec osd-backlight -inc 3")
-(al/define-key *top-map* "XF86MonBrightnessDown"    "exec osd-backlight -dec 3")
-(al/define-key *top-map* "M-XF86MonBrightnessUp"    "exec osd-backlight -inc 10")
-(al/define-key *top-map* "M-XF86MonBrightnessDown"  "exec osd-backlight -dec 10")
+(al/define-key *top-map* "XF86MonBrightnessUp"      "exec xbacklight -inc 3")
+(al/define-key *top-map* "XF86MonBrightnessDown"    "exec xbacklight -dec 3")
+(al/define-key *top-map* "M-XF86MonBrightnessUp"    "exec xbacklight -inc 10")
+(al/define-key *top-map* "M-XF86MonBrightnessDown"  "exec xbacklight -dec 10")
 
 
 ;;; Controlling sound
@@ -175,14 +173,12 @@ additional key."
 (al/define-key *top-map* "XF86AudioMute"            "al/sound-set-current-scontrol toggle")
 (al/define-key *top-map* "M-XF86AudioMute"          "al/sound-next-scontrol")
 (al/define-key *top-map* "C-XF86AudioMute"          "exec tvtime-command TOGGLE_MUTE")
-(al/define-key *top-map* "XF86AudioRaiseVolume"     "al/sound-set-current-scontrol 3%+")
-(al/define-key *top-map* "XF86AudioLowerVolume"     "al/sound-set-current-scontrol 3%-")
-(al/define-key *top-map* "C-XF86AudioRaiseVolume"   "al/sound-set-current-scontrol 1%+")
-(al/define-key *top-map* "C-XF86AudioLowerVolume"   "al/sound-set-current-scontrol 1%-")
-(al/define-key *top-map* "M-XF86AudioRaiseVolume"   "al/sound-set-current-scontrol 10%+")
-(al/define-key *top-map* "M-XF86AudioLowerVolume"   "al/sound-set-current-scontrol 10%-")
-(al/define-key *top-map* "C-M-XF86AudioRaiseVolume" "al/sound-set-current-scontrol 60%")
-(al/define-key *top-map* "C-M-XF86AudioLowerVolume" "al/sound-set-current-scontrol 20%")
+(al/define-key *top-map* "XF86AudioRaiseVolume"     "exec amixer -D pulse sset Master 5%+")
+(al/define-key *top-map* "XF86AudioLowerVolume"     "exec amixer -D pulse sset Master 5%-")
+(al/define-key *top-map* "C-XF86AudioRaiseVolume"   "exec amixer -D pulse sset Master 1%+")
+(al/define-key *top-map* "C-XF86AudioLowerVolume"   "exec amixer -D pulse sset Master 1%-")
+(al/define-key *top-map* "M-XF86AudioRaiseVolume"   "exec amixer -D pulse sset Master 10%+")
+(al/define-key *top-map* "M-XF86AudioLowerVolume"   "exec amixer -D pulse sset Master 10%-")
 
 
 ;;; Controlling EMMS
@@ -215,32 +211,28 @@ additional key."
 (defvar *al/emacs-map* (make-sparse-keymap)
   "Keymap for finding files (and doing other things) in emacs.")
 
-(al/define-key *top-map* "s-f" '*al/emacs-map*)
+(al/define-key *top-map* "s-e" '*al/emacs-map*)
 (al/define-key *al/emacs-map* "1" "al/frames1")
-(al/define-key *al/emacs-map* "b" "al/emacs-eval-show (find-file \"~/notes/bookmarks.org\")")
+(al/define-key *al/emacs-map* "a" "al/emacs-eval-show (org-agenda)")
+(al/define-key *al/emacs-map* "c" "al/emacs-eval-show (org-capture)")
+(al/define-key *al/emacs-map* "r" "al/emacs-eval-show (find-file \"~/Documents/Notes/refile.org\")")
 (al/define-key *al/emacs-map* "n" "al/emacs-eval-show (org-capture 1 \"n\")")
-(al/define-key *al/emacs-map* "t" "al/emacs-eval-show (find-file \"~/notes/tasks.org\")")
-(al/define-key *al/emacs-map* "i" "al/emacs-eval-show (find-file \"~/notes/info.org\")")
+(al/define-key *al/emacs-map* "t" "al/emacs-eval-show (org-capture 1 \"t\")")
 (al/define-key *al/emacs-map* "m" "al/emms-eval (al/emms-notify)")
 
 (al/define-key *top-map* "s-g" "abort")
-(al/define-key *top-map* "s-h" '*help-map*)
-(al/define-key *top-map* "s-u" "time")
+(al/define-key *top-map* "s-t" "time")
 (al/define-key *top-map* "s-i" "info")
-(al/define-key *top-map* "s-l" "lastmsg")
+(al/define-key *top-map* "s-m" "lastmsg")
 (al/define-key *top-map* "s-d" "al/send-key-to-emacs XF86Spell")
-(al/define-key *top-map* "XF86Documents"    "al/emacs-eval-show (find-file \"~/notes/bookmarks.org\")")
-(al/define-key *top-map* "C-XF86Documents"  "al/emacs-eval-show (org-capture 1 \"n\")")
-(al/define-key *top-map* "M-XF86Documents"  "al/emacs-eval-show (find-file \"~/notes/tasks.org\")")
-(al/define-key *top-map* "S-XF86Documents"  "al/emacs-eval-show (find-file \"~/notes/info.org\")")
-(al/define-key *top-map* "XF86Calculator"   "al/emacs-eval-show (calc)")
-(al/define-key *top-map* "C-XF86Calculator" "al/emacs-eval-show (calendar)")
 (al/define-key *top-map* "H-ESC" "exec hide-osds")
 (al/define-key *top-map* "s-7" "al/set-layout 0 s-7")
 (al/define-key *top-map* "s-8" "al/set-layout 1 s-8")
 (al/define-key *top-map* "s-9" "al/set-layout 2 s-9")
 (al/define-key *top-map* "s-Kanji" "al/toggle-caps-lock")
 (al/define-key *top-map* "H-y" "al/yank-primary")
+
+
 (al/define-key *top-map* "F12"                 "exec capture desktop")
 (al/define-key *top-map* "M-F12"               "exec capture image")
 (al/define-key *top-map* "M-SunPrint_Screen"   "exec capture image")
@@ -262,7 +254,7 @@ additional key."
 (al/define-key *root-map* "V"   "version")
 (al/define-key *root-map* "c"   "colon")
 (al/define-key *root-map* "v"   "eval")
-(al/define-key *root-map* "i"   "list-window-properties")
+;; (al/define-key *root-map* "i"   "list-window-properties")
 (al/define-key *root-map* "s-b" "al/banish-pointer")
 (al/define-key *root-map* "s-u" "al/toggle-unclutter")
 
@@ -273,7 +265,6 @@ additional key."
 (al/define-key *menu-map* "C-e" 'menu-down)
 (al/define-key *menu-map* "M-." 'menu-scroll-up)
 (al/define-key *menu-map* "M-e" 'menu-scroll-down)
-(al/define-key *menu-map* "s-m" 'menu-finish)
 (al/define-key *menu-map* "s-g" 'menu-abort)
 
 ;; input map
@@ -293,7 +284,35 @@ additional key."
 (al/define-key *input-map* "M-e" 'input-history-forward)
 (al/define-key *input-map* "C-m" 'input-submit)
 
-
+
+(defvar *al/window-layout* (make-sparse-keymap)
+  "Keymap for winodw stuff.")
+
+(al/define-key *top-map* "s-w" '*al/window-layout*)
+(al/define-key *al/window-layout* "l"   "windowlist")
+(al/define-key *al/window-layout* "f"   "only")
+(al/define-key *al/window-layout* "k"   "kill")
+(al/define-key *al/window-layout* "r"   "iresize")
+
+(al/define-key *top-map* "s-j" "move-focus up")
+(al/define-key *top-map* "s-k" "move-focus down")
+(al/define-key *top-map* "s-h" "move-focus left")
+(al/define-key *top-map* "s-l" "move-focus right")
+
+(al/define-key *top-map* "s-H" "move-window left")
+(al/define-key *top-map* "s-L" "move-window right")
+(al/define-key *top-map* "s-K" "move-window down")
+(al/define-key *top-map* "s-J" "move-window up")
+
+(defvar *al/frame-layout* (make-sparse-keymap)
+  "Keymap for layout stuff.")
+
+
+(al/define-key *top-map* "s-f" '*al/frame-layout*)
+(al/define-key *al/frame-layout* "h" "hsplit")
+(al/define-key *al/frame-layout* "v" "vsplit")
+(al/define-key *al/frame-layout* "k" "remove")
+
 ;;; Web jumps
 
 (defvar *al/web-map* (make-sparse-keymap)
@@ -311,13 +330,13 @@ additional key."
 (al/define-key *al/web-map* "w" '*al/web-wiki-map*)
 
 ;; tv and radio jumps
-(defvar *al/tv-radio-map* (make-sparse-keymap)
-  "Keymap for quick access to tv and radio resources.")
-(al/define-key *top-map* "F6" '*al/tv-radio-map*)
-(al/define-key *al/tv-radio-map* "F6" "exec toggle-tvtime")
-(al/define-key *al/tv-radio-map* "v" "al/emms-eval (emms-play-url \"mms://live.rfn.ru/vesti_fm\")")
-(al/define-key *al/tv-radio-map* "o" "al/browse-show http://www.onlinetv.ru/")
-(al/define-key *al/tv-radio-map* "e" "al/send-key-to-emacs C-M-s-e")
+;;(defvar *al/tv-radio-map* (make-sparse-keymap)
+;;  "Keymap for quick access to tv and radio resources.")
+;;(al/define-key *top-map* "F6" '*al/tv-radio-map*)
+;;(al/define-key *al/tv-radio-map* "F6" "exec toggle-tvtime")
+;;(al/define-key *al/tv-radio-map* "v" "al/emms-eval (emms-play-url \"mms://live.rfn.ru/vesti_fm\")")
+;;(al/define-key *al/tv-radio-map* "o" "al/browse-show http://www.onlinetv.ru/")
+;;(al/define-key *al/tv-radio-map* "e" "al/send-key-to-emacs C-M-s-e")
 
 
 ;;; Executing progs
@@ -325,13 +344,13 @@ additional key."
 (defvar *al/exec-map* (make-sparse-keymap)
   "Keymap for executing shell commands or switching to running applications.")
 (al/define-key *top-map* "s-m" '*al/exec-map*)
-(al/define-key *al/exec-map* "s-m" "exec")
+(al/define-key *al/exec-map* "s-e" "exec")
 (al/define-key *al/exec-map* "e" "al/emacs")
 (al/define-key *al/exec-map* "E" "exec emacs --no-site-file --debug-init")
-(al/define-key *al/exec-map* "t" "al/xterm")
-(al/define-key *al/exec-map* "T" "exec xterm")
+(al/define-key *al/exec-map* "t" "al/st")
+(al/define-key *al/exec-map* "T" "exec st")
 (al/define-key *al/exec-map* "b" "al/browser")
-(al/define-key *al/exec-map* "M" "al/emacs-eval (mana-start)")
+(al/define-key *al/exec-map* "B" "exec qutebrowser")
 
 
 ;;; Mode line
@@ -343,24 +362,5 @@ additional key."
 (al/define-key *al/mode-line-map* "t" "mode-line")
 (al/define-key *al/mode-line-map* "." "al/mode-line-top")
 (al/define-key *al/mode-line-map* "e" "al/mode-line-bottom")
-
-
-;;; Mana
-
-(defvar *al/mana-map* (make-sparse-keymap)
-  "Keymap for sending keys to Mana.")
-(al/define-key *top-map* "s-j" '*al/mana-map*)
-(al/define-key *al/mana-map* "s-j" "mana-state")
-(al/define-key *al/mana-map* "a" "mana-attack")
-(al/define-key *al/mana-map* "A" "mana-quick-attack")
-(al/define-key *al/mana-map* "H" "mana-bat-quest-full")
-(al/define-key *al/mana-map* "h" "mana-bat-quest-cont")
-(al/define-key *al/mana-map* "l" "al/emacs-eval-show (find-file \"~/.local/share/mana/logs/server.themanaworld.org/\")")
-(al/define-key *al/mana-map* "m" "al/emacs-eval-show (find-file \"~/notes/tmw/monsters.org\")")
-(al/define-key *al/mana-map* "q" "al/emacs-eval-show (find-file \"~/notes/tmw/quests.org\")")
-(al/define-key *al/mana-map* "s" "al/emacs-eval-show (find-file \"~/notes/tmw/spells.org\")")
-(al/define-key *al/mana-map* "S" "al/emacs-eval-show (find-file \"~/src/tmw/tmwa-server-data/world/map/npc\")")
-(al/define-key *al/mana-map* "b" "mana-break")
-(al/define-key *al/mana-map* "k" "mana-kill")
 
 ;;; keys.lisp ends here

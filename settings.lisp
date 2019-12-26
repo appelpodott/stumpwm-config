@@ -73,10 +73,10 @@
 ;; This is needed because stumpwm opens display before extension
 ;; definition.
 (xlib::initialize-extensions *display*)
-(xlib:enable-xkeyboard *display*)
+;;(xlib:enable-xkeyboard *display*)
 
-(al/set-display-layout 0)
-(al/enable-per-window-layout)
+;;(al/set-display-layout 0)
+;;(al/enable-per-window-layout)
 
 
 ;;; Message after a part of key sequence
@@ -109,6 +109,7 @@
 (setf *deny-raise-request*
       '((:class "Conkeror")
         (:class "firefox")
+        (:class "qutebrowser")
         (:class "IceCat")
         (:class "FLTK")         ; xcas
         (:class "libreoffice-writer")))

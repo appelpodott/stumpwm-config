@@ -22,6 +22,20 @@
 ;;; Code:
 
 (in-package :stumpwm)
+(load "/usr/lib/quicklisp/setup.lisp")
+
+
+ ;; Load swank.
+(load "/usr/share/emacs/site-lisp/slime/swank-loader.lisp")
+(swank-loader:init)
+(define-stumpwm-command "swank" ()
+  (setf stumpwm:*top-level-error-action* :break)
+  (swank:create-server :port 4005
+                       :style swank:*communication-style*
+                       :dont-close t)
+ (echo-string (current-screen) "Starting swank."))
+(define-key *root-map* (kbd "C-s") "swank")
+
 
 (defvar al/display-number
   (multiple-value-bind (_ array)
@@ -36,7 +50,6 @@
  :dont-close t
  :port (+ swank::default-server-port al/display-number))
 
-
 ;;; Loading additional rc files
 
 (defvar al/init-directory
@@ -65,15 +78,15 @@ instead of any error."
 
 (redirect-all-output (merge-pathnames "log" al/init-directory))
 
-(set-module-dir
- (pathname-as-directory (concat (getenv "HOME")
-                                "/src/stumpwm-contrib")))
-
+(set-module-dir (pathname-as-directory "/usr/share/stumpwm/contrib"))
 (al/load "keys")
 (al/load "utils")
-(al/load "xkb")
-(al/load "sound")
+;;(al/load "xkb")
+;;(al/load "sound")
 (al/load "settings")
 (al/load "visual")
+(ql:quickload "xembed")
+(load-module "stumptray")
+(stumptray::stumptray)
 
 ;;; init.lisp ends here

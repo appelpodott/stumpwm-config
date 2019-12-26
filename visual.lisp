@@ -132,16 +132,16 @@
 
 ;;; mode-line keyboard
 
-(defun al/ml-locks ()
-  (defun bool->color (bool)
-    (if bool "^B^2" ""))
-  (let ((mods (xlib:device-state-locked-mods
-               (xlib:get-state *display*))))
-    (al/ml-separate
-     (format nil "^[~ACaps^] ^[~ANum^]"
-             (bool->color (al/mod-lock-state +caps-lock+ mods))
-             (bool->color (al/mod-lock-state +num-lock+ mods))))))
-
+;;(defun al/ml-locks ()
+;;  (defun bool->color (bool)
+;;    (if bool "^B^2" ""))
+;;  (let ((mods (xlib:device-state-locked-mods
+;;               (xlib:get-state *display*))))
+;;    (al/ml-separate
+;;     (format nil "^[~ACaps^] ^[~ANum^]"
+;;             (bool->color (al/mod-lock-state +caps-lock+ mods))
+;;             (bool->color (al/mod-lock-state +num-lock+ mods))))))
+;;
 (defun al/ml-layout ()
   (al/ml-separate
    (format nil "^[^7*~A^]"
@@ -174,6 +174,7 @@
 
 (if (al/load-module "ttf-fonts")
     (al/load "ttf")
-    (set-font "9x15bold"))
+    ;;(set-font "9x15bold"))
+    (set-font "mono"))
 
 ;;; visual.lisp ends here
