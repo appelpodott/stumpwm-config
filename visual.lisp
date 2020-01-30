@@ -142,10 +142,10 @@
 ;;             (bool->color (al/mod-lock-state +caps-lock+ mods))
 ;;             (bool->color (al/mod-lock-state +num-lock+ mods))))))
 ;;
-(defun al/ml-layout ()
-  (al/ml-separate
-   (format nil "^[^7*~A^]"
-           (al/layout-string (al/current-layout)))))
+;;(defun al/ml-layout ()
+;;  (al/ml-separate
+;;   (format nil "^[^7*~A^]"
+;;           (al/layout-string (al/current-layout)))))
 
 
 ;;; Visual appearance and mode-line settings
@@ -165,10 +165,10 @@
    (:eval (al/ml-cpu))
    (:eval (al/ml-thermal-zones-maybe))
    (:eval (al/ml-net))
-   (:eval (al/ml-battery-maybe))
-   "^>"
-   (:eval (al/ml-layout))
-   (:eval (al/ml-locks))))
+   (:eval (al/ml-battery-maybe))))
+  ;; "^>"
+  ;; (:eval (al/ml-layout))
+  ;; (:eval (al/ml-locks))))
 
 (al/mode-line-on)
 

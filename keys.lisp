@@ -307,8 +307,8 @@ additional key."
 (defvar *al/frame-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
 (al/define-key *top-map* "s-f" '*al/frame-layout*)
-(al/define-key *al/frame-layout* "h" "hsplit")
-(al/define-key *al/frame-layout* "v" "vsplit")
+(al/define-key *al/frame-layout* "/" "hsplit")
+(al/define-key *al/frame-layout* "-" "vsplit")
 (al/define-key *al/frame-layout* "k" "remove")
 
 
