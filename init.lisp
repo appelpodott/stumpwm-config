@@ -21,9 +21,10 @@
 
 ;;; Code:
 
+
+
 (in-package :stumpwm)
 (load "/usr/lib/quicklisp/setup.lisp")
-
 
  ;; Load swank.
 (load "/usr/share/emacs/site-lisp/slime/swank-loader.lisp")
@@ -78,6 +79,9 @@ instead of any error."
 
 (redirect-all-output (merge-pathnames "log" al/init-directory))
 
+;;(run-shell-command "xrandr --output eDP1 --mode 1920x1080")
+(run-shell-command "/usr/bin/python3 ~/Repositories/thinkpad_x1_yoga_rotation/thinkpad_x1_yoga_rotation.py &")
+
 (set-module-dir (pathname-as-directory "/usr/share/stumpwm/contrib"))
 (al/load "keys")
 (al/load "utils")
@@ -87,6 +91,8 @@ instead of any error."
 (al/load "visual")
 (ql:quickload "xembed")
 (load-module "stumptray")
-(stumptray::stumptray)
+;;(stumptray::stumptray)
+(stumpwm:run-commands "stumptray")
+(stumpwm:run-shell-command "nm-applet")
 
 ;;; init.lisp ends here
