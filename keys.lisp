@@ -294,15 +294,15 @@ additional key."
 (al/define-key *al/window-layout* "k"   "kill")
 (al/define-key *al/window-layout* "r"   "iresize")
 
-(al/define-key *top-map* "s-j" "move-focus up")
-(al/define-key *top-map* "s-k" "move-focus down")
+(al/define-key *top-map* "s-k" "move-focus up")
+(al/define-key *top-map* "s-j" "move-focus down")
 (al/define-key *top-map* "s-h" "move-focus left")
 (al/define-key *top-map* "s-l" "move-focus right")
 
 (al/define-key *top-map* "s-H" "move-window left")
 (al/define-key *top-map* "s-L" "move-window right")
-(al/define-key *top-map* "s-K" "move-window down")
-(al/define-key *top-map* "s-J" "move-window up")
+(al/define-key *top-map* "s-J" "move-window down")
+(al/define-key *top-map* "s-K" "move-window up")
 
 (defvar *al/frame-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
