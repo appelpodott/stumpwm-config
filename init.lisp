@@ -79,7 +79,6 @@ instead of any error."
 
 (redirect-all-output (merge-pathnames "log" al/init-directory))
 
-;;(run-shell-command "xrandr --output eDP1 --mode 1920x1080")
 (run-shell-command "/usr/bin/python3 ~/Repositories/thinkpad_x1_yoga_rotation/thinkpad_x1_yoga_rotation.py &")
 
 (set-module-dir (pathname-as-directory "/usr/share/stumpwm/contrib"))

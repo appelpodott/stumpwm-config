@@ -311,12 +311,14 @@ additional key."
 
 (defvar *al/rotate* (make-sparse-keymap)
   "Rotate xrandr.")
-(al/define-key *top-map* "s-r" '*al/rotate*)
+(al/define-key *top-map* "s-a" '*al/rotate*)
+(al/define-key *al/rotate* "a" "exec arandr")
+(al/define-key *al/rotate* "f" "exec xrandr --output eDP1 --mode 1920x1080")
+(al/define-key *al/rotate* "w" "exec xrandr --output eDP1 --mode 2560x1440")
 (al/define-key *al/rotate* "n" "exec xrandr --output eDP1 --rotate normal")
 (al/define-key *al/rotate* "r" "exec xrandr --output eDP1 --rotate right")
 (al/define-key *al/rotate* "l" "exec xrandr --output eDP1 --rotate left")
 (al/define-key *al/rotate* "i" "exec xrandr --output eDP1 --rotate inverted")
-
 ;;; Web jumps
 
 (defvar *al/web-map* (make-sparse-keymap)
