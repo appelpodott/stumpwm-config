@@ -288,7 +288,7 @@ additional key."
   "Keymap for winodw stuff.")
 
 (al/define-key *top-map* "s-w" '*al/window-layout*)
-(al/define-key *al/window-layout* "l"   "windowlist")
+(al/define-key *al/window-layout* "b"   "windowlist")
 (al/define-key *al/window-layout* "f"   "only")
 (al/define-key *al/window-layout* "d"   "kill")
 (al/define-key *al/window-layout* "r"   "iresize")
