@@ -19,9 +19,9 @@
 
 ;; This file should be symlinked by "~/.stumpwmrc".
 
-;;; Code:
-
-
+;;; Debug:
+;;(setq debug-level 2)
+;;(redirect-all-output (data-dir-file "debug-output" "txt"))
 
 (in-package :stumpwm)
 (load "/usr/lib/quicklisp/setup.lisp")
