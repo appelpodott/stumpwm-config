@@ -93,5 +93,6 @@ instead of any error."
 ;;(stumptray::stumptray)
 (stumpwm:run-commands "stumptray")
 (stumpwm:run-shell-command "nm-applet")
+(stumpwm:run-shell-command "blueman-applet")
 
 ;;; init.lisp ends here
