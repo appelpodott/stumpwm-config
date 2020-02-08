@@ -125,9 +125,9 @@
   (al/stumpwm-battery:battery-mode-line-string al/battery)))
 
 (defun al/ml-battery-maybe ()
-  (if al/battery
+  ;;(if al/battery
       (al/ml-battery)
-      ""))
+      "")
 
 
 ;;; mode-line keyboard
@@ -142,10 +142,15 @@
 ;;             (bool->color (al/mod-lock-state +caps-lock+ mods))
 ;;             (bool->color (al/mod-lock-state +num-lock+ mods))))))
 ;;
-;;(defun al/ml-layout ()
-;;  (al/ml-separate
-;;   (format nil "^[^7*~A^]"
-;;           (al/layout-string (al/current-layout)))))
+(defun al/ml-layout ()
+  (al/ml-separate
+   (format nil "^[^7*~A^]"
+           (al/layout-string (al/current-layout)))))
+
+;; simple battery info
+(defun al/bat ()
+  (al/ml-separate
+   (format nil "%B")))
 
 
 ;;; Visual appearance and mode-line settings
@@ -164,10 +169,11 @@
    " ^[^2*%n^]"                 ; group name
    (:eval (al/ml-cpu))
    (:eval (al/ml-thermal-zones-maybe))
+   ;;(:eval (al/ml-battery-maybe))
    (:eval (al/ml-net))
-   (:eval (al/ml-battery-maybe))))
-  ;; "^>"
-  ;; (:eval (al/ml-layout))
+   (:eval (al/bat))   ; battery
+   "^>"
+   (:eval (al/ml-layout))))
   ;; (:eval (al/ml-locks))))
 
 (al/mode-line-on)

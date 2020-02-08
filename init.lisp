@@ -88,11 +88,13 @@ instead of any error."
 ;;(al/load "sound")
 (al/load "settings")
 (al/load "visual")
-(ql:quickload "xembed")
+;;(ql:quickload "embed")
 (load-module "stumptray")
 ;;(stumptray::stumptray)
 (stumpwm:run-commands "stumptray")
 (stumpwm:run-shell-command "nm-applet")
 (stumpwm:run-shell-command "blueman-applet")
+(load-module "battery-portable")
+(load-module "pass")
 
 ;;; init.lisp ends here
