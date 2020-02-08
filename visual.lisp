@@ -172,9 +172,9 @@
 
 (al/mode-line-on)
 
-(if (al/load-module "ttf-fonts")
-    (al/load "ttf")
-    ;;(set-font "9x15bold"))
-    (set-font "mono"))
+;;(if (al/load-module "ttf-fonts")
+;;    (al/load "ttf")
+;;    ;;(set-font "9x15bold"))
+;;    (set-font "mono"))
 
 ;;; visual.lisp ends here
