@@ -65,7 +65,6 @@ additional key."
 (al/define-key *root-map* "F"   "fselect")
 (al/define-key *root-map* "="   "balance-frames")
 (al/define-key *root-map* "s-c" "delete-window")
-(al/define-key *root-map* "C"   "kill-window")
 (al/define-key *root-map* "o"   "al/fother")
 (al/define-key *root-map* "M-o" "fnext")
 
@@ -291,25 +290,23 @@ additional key."
 (al/define-key *top-map* "s-w" '*al/window-layout*)
 (al/define-key *al/window-layout* "l"   "windowlist")
 (al/define-key *al/window-layout* "f"   "only")
-(al/define-key *al/window-layout* "k"   "kill")
+(al/define-key *al/window-layout* "d"   "kill")
 (al/define-key *al/window-layout* "r"   "iresize")
-
-(al/define-key *top-map* "s-k" "move-focus up")
-(al/define-key *top-map* "s-j" "move-focus down")
-(al/define-key *top-map* "s-h" "move-focus left")
-(al/define-key *top-map* "s-l" "move-focus right")
-
-(al/define-key *top-map* "s-H" "move-window left")
-(al/define-key *top-map* "s-L" "move-window right")
-(al/define-key *top-map* "s-J" "move-window down")
-(al/define-key *top-map* "s-K" "move-window up")
+(al/define-key *al/window-layout* "k"   "move-focus up")
+(al/define-key *al/window-layout* "j"   "move-focus down")
+(al/define-key *al/window-layout* "h"   "move-focus left")
+(al/define-key *al/window-layout* "l"   "move-focus right")
+(al/define-key *al/window-layout* "H"   "move-window up")
+(al/define-key *al/window-layout* "L"   "move-window down")
+(al/define-key *al/window-layout* "J"   "move-window left")
+(al/define-key *al/window-layout* "K"   "move-window right")
 
 (defvar *al/frame-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
 (al/define-key *top-map* "s-f" '*al/frame-layout*)
 (al/define-key *al/frame-layout* "/" "hsplit")
 (al/define-key *al/frame-layout* "-" "vsplit")
-(al/define-key *al/frame-layout* "k" "remove")
+(al/define-key *al/frame-layout* "d" "remove")
 
 
 (defvar *al/rotate* (make-sparse-keymap)
