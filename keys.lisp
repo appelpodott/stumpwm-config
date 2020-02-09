@@ -224,7 +224,7 @@ additional key."
 (al/define-key *top-map* "s-i" "info")
 (al/define-key *top-map* "s-m" "lastmsg")
 (al/define-key *top-map* "s-d" "al/send-key-to-eacs XF86Spell")
-al/define-key *top-map* "H-ESC" "exec hide-osds")
+(al/define-key *top-map* "H-ESC" "exec hide-osds")
 (al/define-key *top-map* "s-7" "al/set-layout 0 s-7")
 (al/define-key *top-map* "s-8" "al/set-layout 1 s-8")
 (al/define-key *top-map* "s-9" "al/set-layout 2 s-9")
