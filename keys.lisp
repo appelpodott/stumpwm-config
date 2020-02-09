@@ -223,8 +223,8 @@ additional key."
 (al/define-key *top-map* "s-t" "time")
 (al/define-key *top-map* "s-i" "info")
 (al/define-key *top-map* "s-m" "lastmsg")
-(al/define-key *top-map* "s-d" "al/send-key-to-emacs XF86Spell")
-(al/define-key *top-map* "H-ESC" "exec hide-osds")
+(al/define-key *top-map* "s-d" "al/send-key-to-eacs XF86Spell")
+al/define-key *top-map* "H-ESC" "exec hide-osds")
 (al/define-key *top-map* "s-7" "al/set-layout 0 s-7")
 (al/define-key *top-map* "s-8" "al/set-layout 1 s-8")
 (al/define-key *top-map* "s-9" "al/set-layout 2 s-9")
@@ -320,6 +320,7 @@ additional key."
 (al/define-key *al/rotate* "l" "exec xrandr --output eDP1 --rotate left")
 (al/define-key *al/rotate* "i" "exec xrandr --output eDP1 --rotate inverted")
 (al/define-key *al/rotate* "y" "exec /usr/bin/python3 ~/Repositories/thinkpad_x1_yoga_rotation/thinkpad_x1_yoga_rotation.py &")
+(al/define-key *al/rotate* "t" "exec sh ~/.screenlayout/xhometablet.sh")
 
 ;;; Web jumps
 
