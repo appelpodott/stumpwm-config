@@ -79,7 +79,6 @@ instead of any error."
 
 (redirect-all-output (merge-pathnames "log" al/init-directory))
 
-(run-shell-command "/usr/bin/python3 ~/Repositories/thinkpad_x1_yoga_rotation/thinkpad_x1_yoga_rotation.py &")
 
 (set-module-dir (pathname-as-directory "/usr/share/stumpwm/contrib"))
 (al/load "keys")

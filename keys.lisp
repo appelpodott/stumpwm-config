@@ -296,10 +296,10 @@ additional key."
 (al/define-key *al/window-layout* "j"   "move-focus down")
 (al/define-key *al/window-layout* "h"   "move-focus left")
 (al/define-key *al/window-layout* "l"   "move-focus right")
-(al/define-key *al/window-layout* "H"   "move-window up")
-(al/define-key *al/window-layout* "L"   "move-window down")
-(al/define-key *al/window-layout* "J"   "move-window left")
-(al/define-key *al/window-layout* "K"   "move-window right")
+(al/define-key *al/window-layout* "K"   "move-window up")
+(al/define-key *al/window-layout* "J"   "move-window down")
+(al/define-key *al/window-layout* "H"   "move-window left")
+
 
 (defvar *al/frame-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
@@ -319,6 +319,8 @@ additional key."
 (al/define-key *al/rotate* "r" "exec xrandr --output eDP1 --rotate right")
 (al/define-key *al/rotate* "l" "exec xrandr --output eDP1 --rotate left")
 (al/define-key *al/rotate* "i" "exec xrandr --output eDP1 --rotate inverted")
+(al/define-key *al/rotate* "y" "exec /usr/bin/python3 ~/Repositories/thinkpad_x1_yoga_rotation/thinkpad_x1_yoga_rotation.py &")
+
 ;;; Web jumps
 
 (defvar *al/web-map* (make-sparse-keymap)
