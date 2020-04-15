@@ -359,6 +359,8 @@ additional key."
 (al/define-key *al/exec-map* "t" "al/st")
 (al/define-key *al/exec-map* "T" "exec st")
 (al/define-key *al/exec-map* "b" "al/browser")
+(al/define-key *al/exec-map* "z" "al/zotero")
+(al/define-key *al/exec-map* "Z" "exec zotero")
 (al/define-key *al/exec-map* "B" "exec qutebrowser")
 
 

@@ -409,6 +409,12 @@ program.")
   "Start/stop 'unclutter' on the current display."
   (al/toggle-shepherd-service "unclutter"))
 
+
+(defcommand al/zotero () ()
+            "Start Zotoro unless it is already running, in which case focus it."
+            (run-or-raise (al/herd-command "zotero")
+                          '(:class "Zotero")))
+
 
 ;;; Mode line
 
