@@ -34,7 +34,7 @@
 Return nil, if there are some problems with this font."
   (let ((font (handler-case
                   (make-instance 'xft:font
-                                 :family "mono"
+                                 :family "DejaVu Sans Mono Nerd Font"
                                  :subfamily "Bold"
                                  :size 18)
                 ;; Error means that (xft:cache-fonts) was never run, or
