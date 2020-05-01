@@ -214,7 +214,7 @@ additional key."
 (al/define-key *al/emacs-map* "1" "al/frames1")
 (al/define-key *al/emacs-map* "a" "al/emacs-eval-show (org-agenda)")
 (al/define-key *al/emacs-map* "c" "al/emacs-eval-show (org-capture)")
-(al/define-key *al/emacs-map* "r" "al/emacs-eval-show (find-file \"~/Documents/Notes/refile.org\")")
+(al/define-key *al/emacs-map* "r" "al/emacs-eval-show (find-file \"~/Documents/Notes/reading.org\")")
 (al/define-key *al/emacs-map* "n" "al/emacs-eval-show (org-capture 1 \"n\")")
 (al/define-key *al/emacs-map* "t" "al/emacs-eval-show (org-capture 1 \"t\")")
 (al/define-key *al/emacs-map* "m" "al/emms-eval (al/emms-notify)")
