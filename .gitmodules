@@ -1,0 +1,3 @@
+[submodule "swm-freebsd-volume-modeline"]
+	path = swm-freebsd-volume-modeline
+	url = https://github.com/Jehops/swm-freebsd-volume-modeline

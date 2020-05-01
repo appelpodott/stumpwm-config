@@ -43,12 +43,27 @@
      (setf (,val s) (alloc-color s ,color))))
 
 (al/set-color screen-fg-color (hex-to-xlib-color "#e5e8ef"))
-(al/set-color screen-bg-color "gray15")
-(al/set-color screen-focus-color "DeepSkyBlue")
+;;(al/set-color screen-bg-color "gray15")
+(al/set-color screen-bg-color (hex-to-xlib-color "#1c1b1a"))
+(set-win-bg-color (hex-to-xlib-color "#1c1b1a"))
+(set-bg-color (hex-to-xlib-color "#1c1b1a"))
+(set-frame-outline-width 1)
+(al/set-color screen-focus-color "ForestGreen")
+(al/set-color screen-unfocus-color (hex-to-xlib-color "#1c1b1a"))
 (al/set-color screen-border-color "ForestGreen")
-(al/set-color screen-float-focus-color "DeepSkyBlue")
-(al/set-color screen-float-unfocus-color "gray15")
+;;(al/set-color screen-float-focus-color "DeepSkyBlue")
+(al/set-color screen-float-focus-color "ForestGreen")
+(al/set-color screen-float-unfocus-color (hex-to-xlib-color "#1c1b1a"))
 (update-colors-all-screens)
+
+
+(setf *maxsize-border-width* 4)
+(setf *mode-line-border-width* 0)
+(setf *normal-border-width* 4)
+(setf *transient-border-width* 4)
+(setf *window-border-style* :tight)
+(setf *float-window-border* 0)
+(setf *float-window-title-hight* 0)
 
 
 ;;; Grabbed pointer
@@ -117,7 +132,7 @@
 
 (defvar al/battery (car (al/stumpwm-battery:all-batteries)))
 
-(defvar al/battery-refresh-time 60)
+(defvar al/battery-refresh-time 4)
 
 (al/defun-with-delay
  al/battery-refresh-time al/ml-battery ()
@@ -125,9 +140,19 @@
   (al/stumpwm-battery:battery-mode-line-string al/battery)))
 
 (defun al/ml-battery-maybe ()
-  ;;(if al/battery
+  (if al/battery
       (al/ml-battery)
-      "")
+      ""))
+
+;; simple battery info
+(defun al/bat ()
+  (al/ml-separate
+  (format nil "^[^7*BAT: %B")))
+
+(defun al/volume ()
+  (al/ml-separate
+   (format nil "^[^8*Volume^] %v")))
+
 
 
 ;;; mode-line keyboard
@@ -147,13 +172,12 @@
    (format nil "^[^7*~A^]"
            (al/layout-string (al/current-layout)))))
 
-;; simple battery info
-(defun al/bat ()
-  (al/ml-separate
-   (format nil "%B")))
-
 
 ;;; Visual appearance and mode-line settings
+
+(add-to-load-path "/home/sascha/dotfiles/X/.stumpwm.d/swm-freebsd-volume-modeline/")
+(load-module "swm-freebsd-volume-modeline")
+
 
 (setf
  *window-info-format*
@@ -164,6 +188,9 @@
 
  *time-modeline-string* "%k:%M"
  *mode-line-timeout* 3
+ *mode-line-background-color* (hex-to-xlib-color "#1c1b1a")
+ *mode-line-foreground-color* (hex-to-xlib-color "#1c1b1a")
+ *mode-line-boarder-color* (hex-to-xlib-color "#1c1b1a")
  *screen-mode-line-format*
  '("^[^5*%d^]"                  ; time
    " ^[^2*%n^]"                 ; group name
@@ -172,15 +199,15 @@
    ;;(:eval (al/ml-battery-maybe))
    (:eval (al/ml-net))
    (:eval (al/bat))   ; battery
+;;   (:eval (al/volume))   ; battery
    "^>"
    (:eval (al/ml-layout))))
   ;; (:eval (al/ml-locks))))
 
 (al/mode-line-on)
-
-;;(if (al/load-module "ttf-fonts")
-;;    (al/load "ttf")
-;;    ;;(set-font "9x15bold"))
-;;    (set-font "mono"))
+(if (al/load-module "ttf-fonts")
+    ;;(al/load "ttf")
+    (set-font "DejaVu Sans Mono Nerd Font"))
+;;    (set-font (make-instance 'xft:font :family "DejaVu Sans Mono Nerd Font" :subfamily "Regular" :size 11))
 
 ;;; visual.lisp ends here

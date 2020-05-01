@@ -155,7 +155,7 @@ Otherwise, return `:unknown' value."
   (multiple-value-bind (state down up)
       (net-state *net-device*)
     (let ((fmt-device (ecase state
-                        (:up      "^b^6*~A")
+                        (:up      "^[^7*WIFI: ^b^6*~A")
                         (:down    "^B^5*~A")
                         (:soft    "^b^7*~A")
                         (:hard    "~A")

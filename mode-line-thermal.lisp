@@ -64,7 +64,7 @@
                             (format nil " ~D"
                                     (thermal-zone-temperature zone)))
                           zones))
-           (format nil "~D°C"
+           (format nil "TEMP:~D°C"
                    (thermal-zone-temperature (car zones))))
        "^]")))
 
