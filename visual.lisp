@@ -57,13 +57,13 @@
 (update-colors-all-screens)
 
 
-(setf *maxsize-border-width* 4)
+(setf *maxsize-border-width* 2)
 (setf *mode-line-border-width* 0)
-(setf *normal-border-width* 4)
-(setf *transient-border-width* 4)
-(setf *window-border-style* :tight)
-(setf *float-window-border* 0)
-(setf *float-window-title-hight* 0)
+(setf *normal-border-width* 2)
+(setf *transient-border-width* 2)
+(setf *window-border-style* :thin)
+(setf *float-window-border* 2)
+(setf *float-window-title-height* 0)
 
 
 ;;; Grabbed pointer
