@@ -217,6 +217,12 @@ additional key."
 (al/define-key *al/emacs-map* "r" "al/emacs-eval-show (find-file \"~/Documents/Notes/reading.org\")")
 (al/define-key *al/emacs-map* "n" "al/emacs-eval-show (org-capture 1 \"n\")")
 (al/define-key *al/emacs-map* "t" "al/emacs-eval-show (org-capture 1 \"t\")")
+(al/define-key *al/emacs-map* "i" "al/emacs-eval-show (bh/punch-in)")
+(al/define-key *al/emacs-map* "o" "al/emacs-eval-show (bh/punch-out)")
+(al/define-key *al/emacs-map* "l" "al/emacs-eval-show (bh/clock-in-last-task)")
+(al/define-key *al/emacs-map* "t" "al/emacs-eval-show (bh/insert-inactive-timestamp)")
+(al/define-key *al/emacs-map* "T" "al/emacs-eval-show (bh/toggle-insert-inactive-timestamp)")
+(al/define-key *al/emacs-map* "s" "al/emacs-eval-show (org-save-all-org-buffers)")
 (al/define-key *al/emacs-map* "m" "al/emms-eval (al/emms-notify)")
 
 (al/define-key *top-map* "s-g" "abort")
@@ -352,7 +358,7 @@ additional key."
 
 (defvar *al/exec-map* (make-sparse-keymap)
   "Keymap for executing shell commands or switching to running applications.")
-(al/define-key *top-map* "s-m" '*al/exec-map*)
+(al/define-key *top-map* "s-l" '*al/exec-map*)
 (al/define-key *al/exec-map* "s-e" "exec")
 (al/define-key *al/exec-map* "e" "al/emacs")
 (al/define-key *al/exec-map* "E" "exec emacs --no-site-file --debug-init")
@@ -368,8 +374,8 @@ additional key."
 
 (defvar *al/mode-line-map* (make-sparse-keymap)
   "Keymap for controlling the mode line.")
-(al/define-key *top-map* "M-s-m" '*al/mode-line-map*)
-(al/define-key *al/mode-line-map* "M-s-m" "mode-line")
+(al/define-key *top-map* "s-m" '*al/mode-line-map*)
+(al/define-key *al/mode-line-map* "s-m" "mode-line")
 (al/define-key *al/mode-line-map* "t" "mode-line")
 (al/define-key *al/mode-line-map* "." "al/mode-line-top")
 (al/define-key *al/mode-line-map* "e" "al/mode-line-bottom")
