@@ -325,7 +325,7 @@ additional key."
 
 (defvar *al/group-layout* (make-sparse-keymap)
   "Keymap for layout stuff.")
-(al/define-key *top-map* "sbr" '*al/group-layout*)
+(al/define-key *top-map* "s-r" '*al/group-layout*)
 (al/define-key *al/group-layout* "d" "gkill")
 (al/define-key *al/group-layout* "b" "grouplist")
 (al/define-key *al/group-layout* "p" "gprev")

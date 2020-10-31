@@ -19,7 +19,6 @@
 
 (in-package :stumpwm)
 
-
 ;;; Colors
 
 ;; Yellow and magenta are swapped to show keys in yellow.
@@ -56,7 +55,6 @@
 (al/set-color screen-float-unfocus-color (hex-to-xlib-color "#1c1b1a"))
 (update-colors-all-screens)
 
-
 (setf *maxsize-border-width* 2)
 (setf *mode-line-border-width* 0)
 (setf *normal-border-width* 2)
@@ -65,7 +63,6 @@
 (setf *float-window-border* 2)
 (setf *float-window-title-height* 0)
 
-
 ;;; Grabbed pointer
 
 (setq
@@ -74,7 +71,6 @@
  *grab-pointer-foreground* (hex-to-xlib-color "#3db270")
  *grab-pointer-background* (hex-to-xlib-color "#2c53ca"))
 
-
 ;;; mode-line auxiliary code
 
 (defvar al/ml-separator " | ")
@@ -83,7 +79,6 @@
   "Concatenate `al/ml-separator' and STR."
   (concat al/ml-separator str))
 
-
 ;;; mode-line cpu
 
 (al/load "mode-line-cpu")
@@ -94,7 +89,6 @@
  al/cpu-refresh-time al/ml-cpu ()
  (al/ml-separate (al/stumpwm-cpu:cpu-mode-line-string)))
 
-
 ;;; mode-line thermal
 
 (al/load "mode-line-thermal")
@@ -114,7 +108,6 @@
       (al/ml-thermal-zones)
       ""))
 
-
 ;;; mode-line net
 
 (al/load "mode-line-net")
@@ -125,7 +118,6 @@
  al/net-refresh-time al/ml-net ()
  (al/ml-separate (al/stumpwm-net:net-mode-line-string)))
 
-
 ;;; mode-line battery
 
 (al/load "mode-line-battery")
@@ -154,7 +146,6 @@
    (format nil "^[^8*Volume^] %v")))
 
 
-
 ;;; mode-line keyboard
 
 ;;(defun al/ml-locks ()
@@ -172,7 +163,6 @@
    (format nil "^[^7*~A^]"
            (al/layout-string (al/current-layout)))))
 
-
 ;;; Visual appearance and mode-line settings
 
 (add-to-load-path "/home/sascha/dotfiles/X/.stumpwm.d/swm-freebsd-volume-modeline/")
