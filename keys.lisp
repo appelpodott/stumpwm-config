@@ -225,6 +225,8 @@ additional key."
 (al/define-key *al/emacs-map* "s" "al/emacs-eval-show (org-save-all-org-buffers)")
 (al/define-key *al/emacs-map* "m" "al/emms-eval (al/emms-notify)")
 
+(al/define-key *top-map* "s-1" "al/emacs-eval (pdf-annot-add-highlight-markup-annotation)")
+
 (al/define-key *top-map* "s-g" "abort")
 (al/define-key *top-map* "s-t" "time")
 (al/define-key *top-map* "s-i" "info")
@@ -292,7 +294,6 @@ additional key."
 
 (defvar *al/window-layout* (make-sparse-keymap)
   "Keymap for winodw stuff.")
-
 (al/define-key *top-map* "s-w" '*al/window-layout*)
 (al/define-key *al/window-layout* "b"   "windowlist")
 (al/define-key *al/window-layout* "f"   "only")
@@ -305,6 +306,9 @@ additional key."
 (al/define-key *al/window-layout* "K"   "move-window up")
 (al/define-key *al/window-layout* "J"   "move-window down")
 (al/define-key *al/window-layout* "H"   "move-window left")
+(al/define-key *al/window-layout* "L"   "move-window right")
+(al/define-key *al/window-layout* "n"   "pull-hidden-next")
+(al/define-key *al/window-layout* "p"   "pull-hidden-previous")
 
 
 (defvar *al/frame-layout* (make-sparse-keymap)
@@ -313,6 +317,20 @@ additional key."
 (al/define-key *al/frame-layout* "/" "hsplit")
 (al/define-key *al/frame-layout* "-" "vsplit")
 (al/define-key *al/frame-layout* "d" "remove")
+(al/define-key *al/frame-layout* "b" "frame-windowlist")
+(al/define-key *al/frame-layout* "p" "prev-in-frame")
+(al/define-key *al/frame-layout* "n" "next-in-frame")
+(al/define-key *al/frame-layout* "o" "other-in-frame")
+
+
+(defvar *al/group-layout* (make-sparse-keymap)
+  "Keymap for layout stuff.")
+(al/define-key *top-map* "sbr" '*al/group-layout*)
+(al/define-key *al/group-layout* "d" "gkill")
+(al/define-key *al/group-layout* "b" "grouplist")
+(al/define-key *al/group-layout* "p" "gprev")
+(al/define-key *al/group-layout* "n" "gnext")
+(al/define-key *al/group-layout* "o" "gother")
 
 
 (defvar *al/rotate* (make-sparse-keymap)
@@ -338,24 +356,13 @@ additional key."
 (al/define-key *al/web-map* "F5" "al/browser --new-tab about:blank")
 (al/define-key *al/web-map* "g"  "al/browse-show https://github.com/notifications")
 (al/define-key *al/web-map* "y"  "al/browse-show https://www.youtube.com/feed/subscriptions")
-(al/define-key *al/web-map* "z"  "al/browse-show zeus")
-(al/define-key *al/web-map* "t"  "al/browse-show http://tv.yandex.ru/4/?period=all-day")
-(al/define-key *al/web-map* "M"  "al/browse-show https://maps.google.com/maps?hl=ru")
-(al/define-key *al/web-map* "W"  "al/browse-show http://www.gismeteo.ru/city/hourly/5039/")
-(al/define-key *al/web-map* "w" '*al/web-wiki-map*)
+(al/define-key *al/web-map* "n"  "al/browse-show https://netflix.com/browse")
+(al/define-key *al/web-map* "N"  "al/browse-show https://news.ycombinator.com")
+(al/define-key *al/web-map* "a"  "al/browse-show https://amazon.de")
+(al/define-key *al/web-map* "M"  "al/browse-show https://maps.google.com/maps?hl=de")
+(al/define-key *al/web-map* "w"  "al/browse-show https://wiki.archlinux.org")
 
-;; tv and radio jumps
-;;(defvar *al/tv-radio-map* (make-sparse-keymap)
-;;  "Keymap for quick access to tv and radio resources.")
-;;(al/define-key *top-map* "F6" '*al/tv-radio-map*)
-;;(al/define-key *al/tv-radio-map* "F6" "exec toggle-tvtime")
-;;(al/define-key *al/tv-radio-map* "v" "al/emms-eval (emms-play-url \"mms://live.rfn.ru/vesti_fm\")")
-;;(al/define-key *al/tv-radio-map* "o" "al/browse-show http://www.onlinetv.ru/")
-;;(al/define-key *al/tv-radio-map* "e" "al/send-key-to-emacs C-M-s-e")
-
-
 ;;; Executing progs
-
 (defvar *al/exec-map* (make-sparse-keymap)
   "Keymap for executing shell commands or switching to running applications.")
 (al/define-key *top-map* "s-l" '*al/exec-map*)
@@ -369,7 +376,6 @@ additional key."
 (al/define-key *al/exec-map* "Z" "exec zotero")
 (al/define-key *al/exec-map* "B" "exec qutebrowser")
 
-
 ;;; Mode line
 
 (defvar *al/mode-line-map* (make-sparse-keymap)
